@@ -4,7 +4,7 @@
   "description": "For when you need to flash a lot of AVR devices with Arduino as ISP. Requires avrdude te be installed.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "npm run build:clean && npm run build:windows && npm run build:macos && npm run build:linux",
     "build:clean": "rimraf build",
     "build:windows": "pkg index.js -t node16-win-x64 -o build/avr-bulk-flasher_v$(project-version)_win.exe",
@@ -26,6 +26,7 @@
     "serialport": "^10.4.0"
   },
   "devDependencies": {
+    "jest": "^28.1.2",
     "pkg": "^5.7.0",
     "project-version": "^2.0.0",
     "rimraf": "^3.0.2"
