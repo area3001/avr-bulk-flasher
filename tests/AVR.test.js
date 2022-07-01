@@ -1,6 +1,14 @@
 const { AVR } = require("../lib/AVR");
 
 test("AVR.test.js", async () => {
+  expect.assertions(3);
+
+  try {
+    new AVR();
+  } catch (error) {
+    expect(error).toEqual(Error("No port specified"));
+  }
+
   expect(
     new AVR({
       port: "/dev/tty.usbmodem1411",
