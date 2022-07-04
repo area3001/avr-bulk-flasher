@@ -1,15 +1,15 @@
 {
   "name": "avr-bulk-flasher",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "For when you need to flash a lot of AVR devices with Arduino as ISP. Requires avrdude te be installed.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "build": "npm run build:clean && npm run build:windows && npm run build:macos && npm run build:linux",
-    "build:clean": "rimraf build",
-    "build:windows": "pkg index.js -t node16-win-x64 -o build/avr-bulk-flasher_v$(project-version)_win.exe",
-    "build:macos": "pkg index.js -t node16-macos-x64 -o build/avr-bulk-flasher_v$(project-version)_macos",
-    "build:linux": "pkg index.js -t  node16-linux-x64 -o build/avr-bulk-flasher_v$(project-version)_linux"
+    "build:clean": "rimraf build && rimraf zip && mkdir zip",
+    "build:windows": "mkdir -p build/windows/prebuilds && pkg index.js -t node16-win-x64 -o build/windows/avr-bulk-flasher_v$(project-version)_win.exe && cp -r node_modules/@serialport/bindings-cpp/prebuilds/win32-x64 build/windows/prebuilds && zip -r zip/avr-bulk-flasher_v$(project-version)_win.zip build/windows/avr-bulk-flasher_v$(project-version)_win.exe build/windows/prebuilds",
+    "build:macos": "mkdir -p build/macos/prebuilds && pkg index.js -t node16-macos-x64 -o build/macos/avr-bulk-flasher_v$(project-version)_macos && cp -r node_modules/@serialport/bindings-cpp/prebuilds/darwin-x64+arm64 build/macos/prebuilds && zip -r zip/avr-bulk-flasher_v$(project-version)_macos.zip build/macos/avr-bulk-flasher_v$(project-version)_macos build/macos/prebuilds",
+    "build:linux": "mkdir -p build/linux/prebuilds && pkg index.js -t  node16-linux-x64 -o build/linux/avr-bulk-flasher_v$(project-version)_linux && cp -r node_modules/@serialport/bindings-cpp/prebuilds/linux-x64 build/linux/prebuilds && zip -r zip/avr-bulk-flasher_v$(project-version)_linux.zip build/linux/avr-bulk-flasher_v$(project-version)_linux build/linux/prebuilds"
   },
   "keywords": [
     "avr",
