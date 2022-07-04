@@ -1,6 +1,6 @@
 {
   "name": "avr-bulk-flasher",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "For when you need to flash a lot of AVR devices with Arduino as ISP. Requires avrdude te be installed.",
   "main": "index.js",
   "scripts": {
