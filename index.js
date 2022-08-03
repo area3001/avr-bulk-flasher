@@ -58,9 +58,9 @@ async function flashLoop(port, file, avr) {
         `Found a signature ${signature}, waiting a second to write fuses`
       );
       await sleep(100);
-      // await avr.writeFuses();
+      await avr.writeFuses();
       await sleep(100);
-      // await avr.flash(file);
+      await avr.flash(file);
       console.log("Done");
       // console.log("Waiting for device to reset");
       // while (true) {
