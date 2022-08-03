@@ -7,7 +7,7 @@ const { AVR, listSerialPorts } = require("./lib/AVR");
   let port = argv.port;
 
   if (!file) {
-    throw new Error("No hex file specified");
+    throw new Error("No hex file specified, use the flag '--file <file>'");
   }
   if (!port) {
     const ports = await listSerialPorts();
