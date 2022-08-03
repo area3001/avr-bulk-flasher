@@ -28,6 +28,7 @@ const { AVR, listSerialPorts } = require("./lib/AVR");
       port = answers.port;
     }
   }
+  console.log(`Using port ${port}`);
 
   const { baudrate, device, programmer } = argv;
   const avr = new AVR({
